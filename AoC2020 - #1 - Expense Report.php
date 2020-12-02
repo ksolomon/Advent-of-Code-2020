@@ -9,32 +9,46 @@ function find2020($nums) {
 	// Define working array
 	$loopnums = $nums;
 
+	$numOps = count($nums)*count($loopnums);
+
+	// echo '$numOps: '.$numOps.PHP_EOL;
+
 	$i = 0;
+	$j = 0;
 	$resarr = array();
 
-	foreach ($nums as $num) {
-		//echo 'Loop: '.$i.', Item: '.$num.', Internal loop item: '.$loopnums[$i].PHP_EOL;
+	while ($j <= $numOps) {
+		// echo 'Loop: '.$j.PHP_EOL;
 
-		foreach ($loopnums as $test) {
-			$is2020 = $test-$num;
+		foreach ($nums as $num) {
+			//echo 'Loop: '.$i.', Item: '.$num.', Internal loop item: '.$loopnums[$i].PHP_EOL;
 
+			foreach ($loopnums as $test) {
+				//echo 'Test: '.$num.' & '.$test.PHP_EOL;
+				$subOp = $test-$num;
 
-
-			if ($is2020 == 2020) {
-				$sol = $num*$test;
-
-				echo 'HIT!'.PHP_EOL;
-				echo 'First number:'.$num.', Second number: '.$test.PHP_EOL;
-				echo 'Solution: '.$sol.PHP_EOL;
+				$resarr[$i] = array('Loop' => $i, 'First Number' => $num, 'Second Number' => $test, 'SubOp' => $subOp);
 			}
+
+			$i++;
+
+			// echo '<pre>';
+			// print_r($resarr);
+			// echo '</pre>';
 		}
 
-		echo 'Loop: '.$i.', Item: '.$num.', $is2020: '.$is2020.PHP_EOL;
+		$j++;
+	}
 
-		// $var = (<condition>) ? <then> : <else>
-		//$is2020 = () ? 'default' : $_POST['action'];
+	foreach ($resarr as $is2020) {
+		//print_r($is2020);
 
-		$i++;
+		if (in_array(2020, $is2020)) {
+			echo 'HIT!' . PHP_EOL;
+			print_r($is2020);
+			// echo 'First number:' . $num . ', Second number: ' . $test . PHP_EOL;
+			// echo 'Solution: ' . $sol . PHP_EOL;
+		}
 	}
 }
 
