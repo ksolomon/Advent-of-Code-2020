@@ -36,31 +36,36 @@ function chkPass($input) {
 	foreach ($input as $line) {
 		$pat = explode(' ',$line[0]);
 		$limit = explode('-',$pat[0]);
-
 		$min = $limit[0];
 		$max = $limit[1];
+
+		if ($min == 1) {
+			$min = 0;
+		} else {
+			$min = $min-1;
+		}
+
+		$max = $max - 1;
+
 		$char = $pat[1];
 
 		$pass = $line[1];
 
-		$patternCount = substr_count($pass, $char);
-		$valid = "No";
+		//echo 'Position 1: '.$min,', Position 2: '.$max.', Character: '.$char.', Password: '.$pass.PHP_EOL;
 
-		if (($patternCount >= $min && $patternCount <= $max)) {
-			$valid = "Yes";
+		$str1 = substr($pass,$min,1);
+		$str2 = substr($pass,$max,1);
 
-			$count++;
+		if ($str1 == $str2) {
+			continue;
+		} else {
+			if (($str1 == $char) || ($str2 == $char)) {
+				$count++;
+			}
 		}
-
-		// echo 'Password: '.$pass.PHP_EOL;
-		// echo 'Valid Pattern: '.$line[0].PHP_EOL;
-		// echo 'Valid Password? '.$valid.PHP_EOL;
-		// echo PHP_EOL;
-		//echo 'Limit-min: '.$min.', Limit-max: '.$max,', Character: '.$char.', Password: '.$pass.', Pattern Count: '.$patternCount.PHP_EOL;
 	}
 
 	echo 'Total Valid Passwords: '.$count.PHP_EOL;
-	//print_r($input);
 }
 
 $CSVdata = arrayFromCSV($file);
