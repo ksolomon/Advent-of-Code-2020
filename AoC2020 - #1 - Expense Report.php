@@ -18,37 +18,21 @@ function find2020($nums) {
 	$resarr = array();
 
 	while ($j <= $numOps) {
-		// echo 'Loop: '.$j.PHP_EOL;
-
 		foreach ($nums as $num) {
-			//echo 'Loop: '.$i.', Item: '.$num.', Internal loop item: '.$loopnums[$i].PHP_EOL;
-
 			foreach ($loopnums as $test) {
-				//echo 'Test: '.$num.' & '.$test.PHP_EOL;
-				$subOp = $test-$num;
+				$subOp = $test+$num;
 
-				$resarr[$i] = array('Loop' => $i, 'First Number' => $num, 'Second Number' => $test, 'SubOp' => $subOp);
+				if ($subOp == 2020) {
+					echo 'HIT!' . PHP_EOL;
+					echo 'First number:' . $num . ', Second number: ' . $test . PHP_EOL;
+					break;
+				}
 			}
 
 			$i++;
-
-			// echo '<pre>';
-			// print_r($resarr);
-			// echo '</pre>';
 		}
 
 		$j++;
-	}
-
-	foreach ($resarr as $is2020) {
-		//print_r($is2020);
-
-		if (in_array(2020, $is2020)) {
-			echo 'HIT!' . PHP_EOL;
-			print_r($is2020);
-			// echo 'First number:' . $num . ', Second number: ' . $test . PHP_EOL;
-			// echo 'Solution: ' . $sol . PHP_EOL;
-		}
 	}
 }
 
