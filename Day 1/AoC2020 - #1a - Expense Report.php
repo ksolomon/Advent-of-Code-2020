@@ -8,7 +8,6 @@ $input = array(1977,1515,1857,1800,1737,1778,1505,1958,1982,1941,1417,1232,1234,
 function find2020($nums) {
 	// Define working array
 	$loopnums = $nums;
-	$loop3 = $nums;
 
 	$numOps = count($nums)*count($loopnums);
 
@@ -29,7 +28,7 @@ function find2020($nums) {
 					echo 'HIT!' . PHP_EOL;
 					echo 'First number:' . $num . ', Second number: ' . $test . PHP_EOL;
 					$sol = $subOp;
-					break;
+					break(2);
 				}
 			}
 
@@ -37,7 +36,7 @@ function find2020($nums) {
 		}
 
 		if ($sol == 2020) {
-			break;
+			break(1);
 		}
 
 		$j++;
