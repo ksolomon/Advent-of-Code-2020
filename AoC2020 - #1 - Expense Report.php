@@ -15,6 +15,8 @@ function find2020($nums) {
 
 	$i = 0;
 	$j = 0;
+	$sol = 0;
+
 	$resarr = array();
 
 	while ($j <= $numOps) {
@@ -25,11 +27,16 @@ function find2020($nums) {
 				if ($subOp == 2020) {
 					echo 'HIT!' . PHP_EOL;
 					echo 'First number:' . $num . ', Second number: ' . $test . PHP_EOL;
+					$sol = $subOp;
 					break;
 				}
 			}
 
 			$i++;
+		}
+
+		if ($sol == 2020) {
+			break;
 		}
 
 		$j++;
