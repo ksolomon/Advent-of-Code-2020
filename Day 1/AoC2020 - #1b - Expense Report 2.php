@@ -1,5 +1,5 @@
 <?php
-// Advent of Code 2020 - Puzzle 1: Expense Report
+// Advent of Code 2020 - Puzzle 1b: Expense Report - 3 numbers
 // Keith Solomon
 // Dec. 2,2020
 
